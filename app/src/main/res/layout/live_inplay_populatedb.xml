@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context=".LiveInPlayEditDb">
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/toolbarwrap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="fill_parent"
+            android:layout_height="58dp"
+            android:background="@color/colorAccent"
+            android:minHeight="?attr/actionBarSize">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Live in play Tips"
+                android:textSize="20sp" />
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <LinearLayout
+        android:padding="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/toolbarwrap"
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
+
+        <EditText
+
+            android:id="@+id/league"
+            android:layout_width="match_parent"
+            android:hint="Enter League Name"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/home"
+            android:layout_width="match_parent"
+            android:hint="Enter Home Team"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/away"
+            android:layout_width="match_parent"
+            android:hint="Away Team"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/datetime"
+            android:hint="Enter Date and Time"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/myodds"
+            android:layout_width="match_parent"
+            android:hint="Enter Odds"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/myprediction"
+            android:layout_width="match_parent"
+            android:hint="Prediction"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/myresult"
+            android:layout_width="match_parent"
+            android:hint="Enter results"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/mystatus"
+            android:layout_width="match_parent"
+            android:hint="Enter status i.e Won/lost"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:text="Add prediction"
+            android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/update_twice"
+                android:layout_width="wrap_content"
+                android:text="Update"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        </LinearLayout>
+</RelativeLayout>

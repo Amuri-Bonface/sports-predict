@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "107289967832",
+    "firebase_url": "https://sporting-4496c.firebaseio.com",
+    "project_id": "sporting-4496c",
+    "storage_bucket": "sporting-4496c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107289967832:android:be2064136b713404",
+        "android_client_info": {
+          "package_name": "com.guidoapps.firestorerecycleradaptersample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107289967832-gg4954455em3cv8vbk6peklm3pqkantg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.guidoapps.firestorerecycleradaptersample",
+            "certificate_hash": "8e61267c1ba8a0de03e84396162337384cb0c9ca"
+          }
+        },
+        {
+          "client_id": "107289967832-v4q0943las1bk528oirdl1qtrhr0pnrk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfaC1MkVoJA1Gox-bbWBCf91C_GWeYWHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107289967832-v4q0943las1bk528oirdl1qtrhr0pnrk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107289967832:android:3e2e54825cfbc382",
+        "android_client_info": {
+          "package_name": "com.guidoapps.surebets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107289967832-3mtfmas0fgl2a1g88ha164jvk12t74mf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.guidoapps.surebets",
+            "certificate_hash": "8e61267c1ba8a0de03e84396162337384cb0c9ca"
+          }
+        },
+        {
+          "client_id": "107289967832-v4q0943las1bk528oirdl1qtrhr0pnrk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfaC1MkVoJA1Gox-bbWBCf91C_GWeYWHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107289967832-v4q0943las1bk528oirdl1qtrhr0pnrk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107289967832:android:26b15450bcb0e763",
+        "android_client_info": {
+          "package_name": "com.mysportpesa.surebetsclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107289967832-jhfv87lttul311v4vri1mn6vofmijih7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mysportpesa.surebetsclient",
+            "certificate_hash": "8e61267c1ba8a0de03e84396162337384cb0c9ca"
+          }
+        },
+        {
+          "client_id": "107289967832-v4q0943las1bk528oirdl1qtrhr0pnrk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfaC1MkVoJA1Gox-bbWBCf91C_GWeYWHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107289967832-v4q0943las1bk528oirdl1qtrhr0pnrk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

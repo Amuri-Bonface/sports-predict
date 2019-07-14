@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mysportpesa.surebetsclient">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+
+        android:theme="@style/WhiteTheme">
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+        <activity android:name="com.mysportpesa.surebetsclient.MainActivity2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.mysportpesa.surebetsclient.UndeOver"
+            android:theme="@style/WhiteTheme"
+            />
+        <activity android:name="com.mysportpesa.surebetsclient.SureOdds"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.MiniJackpot"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.MegaJackpot"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.LiveInPlay"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.DoubleChance"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.GoalGoal"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.PremiumTips"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.DoubleChanceEditDb"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.GoalGoalEditDb"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.LiveInPlayEditDb"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.MegaJackPotEditDb"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.MiniJackpotEditDb"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.SureOddsEditDb"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.History"
+            android:theme="@style/WhiteTheme"/>
+        <activity android:name="com.mysportpesa.surebetsclient.UnderOverEditDb" />
+    </application>
+
+</manifest>

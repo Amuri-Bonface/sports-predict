@@ -1,0 +1,155 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.android.tools.build:gradle:3.4.0'
+    }
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.mysportpesa.surebetsclient"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 3
+        versionName "1.0.2"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        useLibrary 'org.apache.http.legacy'
+        manifestPlaceholders = [onesignal_app_id               : "33615bf6-9a92-48e5-b34f-fea1f3232a26",
+                                onesignal_google_project_number: "REMOTE"]
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //support
+    implementation supportDependencies.appCompat
+    implementation supportDependencies.support
+    implementation supportDependencies.design
+    implementation supportDependencies.recyclerView
+    implementation supportDependencies.cardView
+
+    //imageLoader
+    implementation libraries.circleImageView
+    implementation libraries.glide
+
+    //binding
+    implementation libraries.butterknife
+    annotationProcessor libraries.butterknifeCompiler
+
+    //firebase
+    implementation libraries.firestore
+    implementation libraries.firebaseUI
+    implementation libraries.firebaseUIDatabase
+
+//Firebase Core//
+
+    implementation 'com.google.firebase:firebase-core:11.4.2'
+
+// FCM//
+
+    implementation 'com.google.firebase:firebase-messaging:11.4.2'
+
+   // annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    implementation 'com.onesignal:OneSignal:3.+@aar'
+
+    //database operation lib
+    implementation 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+
+    //google play services
+    implementation 'com.google.android.gms:play-services-gcm:11.4.2'
+
+    implementation 'com.google.android.gms:play-services-analytics:11.4.2'
+
+    implementation 'com.google.android.gms:play-services-location:11.4.2'
+
+    implementation 'com.google.android.gms:play-services:11.4.2'
+
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+//    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.google.firebase:firebase-auth:11.4.2'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+
+    implementation 'com.android.support:customtabs:28.0.0'
+
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    implementation 'com.daimajia.easing:library:2.0@aar'
+
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+
+    implementation 'com.github.GrenderG:Toasty:1.4.2'
+    implementation ('android.arch.lifecycle:extensions:1.1.1')
+
+
+    implementation 'com.daimajia.androidanimations:library:2.3@aar'
+
+    implementation('com.mikepenz:aboutlibraries:6.0.2@aar') {
+        transitive = true
+    }
+    implementation('com.mikepenz:materialdrawer:6.0.3@aar') {
+        transitive = true
+    }
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
+    implementation 'com.daimajia.slider:library:1.1.5@aar'
+
+    implementation "com.android.support:support-annotations:28.0.0"
+
+    implementation 'com.webianks.library:easy-feedback:1.0.2'
+
+    implementation 'com.geniusforapp.fancydialog:FancyDialog:0.1.4'
+
+    implementation('com.mikepenz:crossfadedrawerlayout:1.0.1@aar')
+
+    implementation 'com.android.volley:volley:1.1.1'
+
+    implementation 'com.kaopiz:kprogresshud:1.1.0'
+
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.11.0'
+
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
+
+    implementation 'com.github.yesidlazaro:GmailBackground:1.2.0'
+
+    implementation 'com.airbnb.android:lottie:2.2.5'
+
+    //Stylish edittextbox
+    implementation 'com.github.florent37:materialtextfield:1.0.7'
+
+    //radiogroup
+    implementation 'com.github.Gavras:MultiLineRadioGroup:v1.0.0.6'
+
+    //ticker textview
+    implementation 'com.tomer:fadingtextview:2.5'
+
+    // Dexter runtime permissions
+    implementation 'com.karumi:dexter:4.2.0'
+
+
+}
+apply plugin: 'com.google.gms.google-services'
