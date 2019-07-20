@@ -7,9 +7,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by kshitij on 12/17/17.
- */
+
 
 public class LoginRequest extends StringRequest {
     private static final String LOGIN_URL = "https://boggy-dispatcher.000webhostapp.com/ecommerce/login.php";
