@@ -49,7 +49,7 @@ import es.dmoral.toasty.Toasty;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    private SliderLayout sliderShow;
+        private SliderLayout sliderShow;
     private Drawer result;
     private CrossfadeDrawerLayout crossfadeDrawerLayout = null;
 
