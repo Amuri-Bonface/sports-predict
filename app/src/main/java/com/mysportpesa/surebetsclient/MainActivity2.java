@@ -20,6 +20,11 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
@@ -60,6 +65,7 @@ public class MainActivity2 extends AppCompatActivity {
     private String name, email, photo, mobile;
     private String  first_time;
     private FirebaseFirestore db;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +93,48 @@ public class MainActivity2 extends AppCompatActivity {
             tapview();
             session.setFirstTime(false);
         }
+
+        MobileAds.initialize(this,
+                "cca-app-pub-7590760147512944~3231997997");
+
+        loadAds();
+        loadFullscreenAd();
     }
+
+    private void loadAds(){
+        AdView mAdView;
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+    }
+
+    private void loadFullscreenAd(){
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-7590760147512944/8727388323");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+
+            }
+
+            @Override
+            public void onAdLoaded() {
+                loadFullscreenAd();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+
+            }
+        });
+
+
+    }
+
 
     private void tapview() {
 
@@ -438,6 +485,7 @@ public class MainActivity2 extends AppCompatActivity {
         //check Internet Connection
         new CheckInternetConnection(this).checkConnection();
         sliderShow.startAutoCycle();
+        loadFullscreenAd();
         super.onResume();
     }
 

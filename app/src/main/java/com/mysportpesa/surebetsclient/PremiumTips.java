@@ -13,6 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
+
 import static com.activeandroid.Cache.getContext;
 
 public class PremiumTips extends AppCompatActivity {
@@ -24,7 +30,7 @@ public class PremiumTips extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button dailybtn=findViewById(R.id.btndaily);
+       /* Button dailybtn=findViewById(R.id.btndaily);
         dailybtn.setOnClickListener(v -> {
             //call premium function
             premium();
@@ -60,7 +66,23 @@ public class PremiumTips extends AppCompatActivity {
             //call premium function
             premium();
         });
-        //contact admin via whatsapp
+
+
+       */
+        ImageView mpesa=findViewById(R.id.mpesa);
+        mpesa.setOnClickListener(v -> {
+            //call premium function
+            premium();
+        });
+
+        ImageView paypa=findViewById(R.id.paypal);
+        paypa.setOnClickListener(v -> {
+            //call premium function
+            paypal();
+        });
+
+
+       //contact admin via whatsapp
         ImageView newdoc= findViewById(R.id.newrecord);
         newdoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,25 +98,71 @@ public class PremiumTips extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        MobileAds.initialize(this,
+                "cca-app-pub-7590760147512944~3231997997");
         //check Internet Connection
         new CheckInternetConnection(this).checkConnection();
+        loadAds();
+        loadFullscreenAd();
 
+    }
+
+    @Override
+    protected void onResume() {
+
+        //check Internet Connection
+        new CheckInternetConnection(this).checkConnection();
+       loadFullscreenAd();
+        super.onResume();
     }
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
+    private void loadAds(){
+        AdView mAdView;
 
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+    }
+    private void loadFullscreenAd(){
+        InterstitialAd mInterstitialAd;
+               mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-7590760147512944/8727388323");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+
+            }
+
+            @Override
+            public void onAdLoaded() {
+                loadFullscreenAd();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+
+            }
+        });
+
+
+    }
     private void premium(){
         //COPY phone number to clipboard
         android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "0717264871");
+        android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "+254717264871");
         clipboard.setPrimaryClip(clip);
 
-        Snackbar.make(findViewById(android.R.id.content), "0717264871 has been copied", Snackbar.LENGTH_LONG)
+        Snackbar.make(findViewById(android.R.id.content), "+254717264871 has been copied", Snackbar.LENGTH_LONG)
                 .setActionTextColor(Color.GREEN)
-                .setDuration(5000)
+                .setDuration(6000)
                 .setAction("Click & Use Send Money", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -108,5 +176,27 @@ public class PremiumTips extends AppCompatActivity {
                 .show();
 
     }
+    private void paypal(){
+        //COPY phone number to clipboard
+        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "amuribonface@gmail.com");
+        clipboard.setPrimaryClip(clip);
+
+        Snackbar.make(findViewById(android.R.id.content), "amuribonface@gmail.com has been copied", Snackbar.LENGTH_LONG)
+                .setActionTextColor(Color.GREEN)
+                .setDuration(6000)
+                .setAction("Use Email copied to Send Money", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String url = "https://www.paypal.com/myaccount/transfer/?from=Header";
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+
+                    }
+                })
+                .show();
+
+    }
+
+
 
 }

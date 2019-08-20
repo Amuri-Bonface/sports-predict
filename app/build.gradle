@@ -17,8 +17,8 @@ android {
         applicationId "com.mysportpesa.surebetsclient"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 3
-        versionName "1.0.2"
+        versionCode 5
+        versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         useLibrary 'org.apache.http.legacy'
         manifestPlaceholders = [onesignal_app_id               : "33615bf6-9a92-48e5-b34f-fea1f3232a26",

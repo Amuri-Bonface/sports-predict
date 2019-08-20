@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -60,12 +63,24 @@ public class DoubleChance extends AppCompatActivity {
         Objects.requireNonNull(friendList.getLayoutManager()).scrollToPosition(0);
         //check Internet Connection
         new CheckInternetConnection(this).checkConnection();
+        loadAds();
 
     }
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private void loadAds(){
+        AdView mAdView;
+        MobileAds.initialize(this,
+                "cca-app-pub-7590760147512944~3231997997");
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
     }
     private void init(){
         linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
