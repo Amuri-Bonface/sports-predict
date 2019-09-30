@@ -51,12 +51,12 @@
 
             <ImageView
                 android:id="@+id/view_profile"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/profile"
+                android:layout_width="22dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="10dp"
-                android:onClick="viewProfile"/>
+                android:onClick="viewProfile"
+                android:src="@drawable/profilex" />
 
             <ImageView
                 android:id="@+id/cart"
@@ -312,6 +312,24 @@
                     </android.support.v7.widget.CardView>
 
                 </LinearLayout>
+                <EditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="(Country code)(Phone No) "
+
+                        android:textColorHint="#03A9F4"
+                        android:textAlignment="center"
+                        android:inputType="phone"
+                        android:textColor="#34495e"/>
+
+
+                <Button
+                    android:id="@+id/submitphone"
+                    android:layout_width="match_parent"
+                    android:text="submit phone no for free bets"
+                    android:onClick="submit_phoone"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -349,6 +367,7 @@
 
 
         </LinearLayout>
+
     </ScrollView>
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"

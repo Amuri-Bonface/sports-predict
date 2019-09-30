@@ -8,6 +8,7 @@
     android:background="@color/gradient_background"
     tools:context="LoginActivity">
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +43,7 @@
                 app:mtf_image="@drawable/email">
 
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Email"

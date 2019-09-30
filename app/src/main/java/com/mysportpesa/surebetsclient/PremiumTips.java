@@ -160,10 +160,10 @@ public class PremiumTips extends AppCompatActivity {
         android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "+254717264871");
         clipboard.setPrimaryClip(clip);
 
-        Snackbar.make(findViewById(android.R.id.content), "+254717264871 has been copied", Snackbar.LENGTH_LONG)
+        Snackbar.make(findViewById(android.R.id.content), "0717264871 copied", Snackbar.LENGTH_LONG)
                 .setActionTextColor(Color.GREEN)
                 .setDuration(6000)
-                .setAction("Click & Use Send Money", new View.OnClickListener() {
+                .setAction("Click & send Ksh. 700", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         PackageManager manager = getPackageManager();
@@ -177,25 +177,31 @@ public class PremiumTips extends AppCompatActivity {
 
     }
     private void paypal(){
-        //COPY phone number to clipboard
+      /*  //COPY phone number to clipboard
         android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "amuribonface@gmail.com");
-        clipboard.setPrimaryClip(clip);
+        clipboard.setPrimaryClip(clip);*/
 
-        Snackbar.make(findViewById(android.R.id.content), "amuribonface@gmail.com has been copied", Snackbar.LENGTH_LONG)
+
+
+        Snackbar.make(findViewById(android.R.id.content), "This will redirect you to paypal payment option", Snackbar.LENGTH_LONG)
                 .setActionTextColor(Color.GREEN)
                 .setDuration(6000)
-                .setAction("Use Email copied to Send Money", new View.OnClickListener() {
+                .setAction("Just pay $7 dollars", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String url = "https://www.paypal.com/myaccount/transfer/?from=Header";
+                        String url = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HL4WYTWBWVE72";
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 
                     }
                 })
                 .show();
+        String url = "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HL4WYTWBWVE72";
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+
 
     }
+
 
 
 

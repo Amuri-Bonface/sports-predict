@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -49,6 +52,7 @@ import com.webianks.easy_feedback.EasyFeedback;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
@@ -63,9 +67,9 @@ public class MainActivity2 extends AppCompatActivity {
     private UserSession session;
     private HashMap<String, String> user;
     private String name, email, photo, mobile;
-    private String  first_time;
     private FirebaseFirestore db;
     private InterstitialAd mInterstitialAd;
+    private EditText phoneEdt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +79,9 @@ public class MainActivity2 extends AppCompatActivity {
         Typeface typeface = ResourcesCompat.getFont(this, R.font.blacklist);
         TextView appname = findViewById(R.id.appname);
         appname.setTypeface(typeface);
+
+        db = FirebaseFirestore.getInstance();
+        phoneEdt=(EditText)findViewById(R.id.phone);
 
         //check Internet Connection
         new CheckInternetConnection(this).checkConnection();
@@ -151,7 +158,7 @@ public class MainActivity2 extends AppCompatActivity {
                                     .tintTarget(true)
                                     .transparentTarget(true)
                                     .outerCircleColor(R.color.first),
-                            TapTarget.forView(findViewById(R.id.view_profile), "Profile", "You can view and edit your profile here !")
+                            TapTarget.forView(findViewById(R.id.view_profile), "Twitter", "Check out our twitter for more bets !")
                                     .targetCircleColor(R.color.colorAccent)
                                     .titleTextColor(R.color.colorAccent)
                                     .titleTextSize(25)
@@ -173,7 +180,7 @@ public class MainActivity2 extends AppCompatActivity {
                                     .tintTarget(true)
                                     .transparentTarget(true)
                                     .outerCircleColor(R.color.second),
-                            TapTarget.forView(findViewById(R.id.visitingcards), "Categories", "Betting Tips are listed here! Scroll To view more")
+                            TapTarget.forView(findViewById(R.id.visitingcards), "Categories", "Betting Tips are listed here! Scroll To view more. Submit phone No for free bets")
                                     .targetCircleColor(R.color.colorAccent)
                                     .titleTextColor(R.color.colorAccent)
                                     .titleTextSize(25)
@@ -184,6 +191,7 @@ public class MainActivity2 extends AppCompatActivity {
                                     .tintTarget(true)
                                     .transparentTarget(true)
                                     .outerCircleColor(R.color.fourth))
+
                     .listener(new TapTargetSequence.Listener() {
                         // This listener will tell us when interesting(tm) events happen in regards
                         // to the sequence
@@ -272,7 +280,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         //Adding nav drawer items ------------------------------------------------------------------
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName(R.string.home).withIcon(R.drawable.home);
-        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.myprofile).withIcon(R.drawable.profile);
+        PrimaryDrawerItem item2 = new PrimaryDrawerItem().withIdentifier(2).withName(R.string.myprofile).withIcon(R.drawable.feedback);
         PrimaryDrawerItem item3 = new PrimaryDrawerItem().withIdentifier(3).withName(R.string.wishlist).withIcon(R.drawable.similar);
         PrimaryDrawerItem item4 = new PrimaryDrawerItem().withIdentifier(4).withName(R.string.cart).withIcon(R.drawable.notificon);
         PrimaryDrawerItem item5 = new PrimaryDrawerItem().withIdentifier(5).withName(R.string.logout).withIcon(R.drawable.logout);
@@ -468,6 +476,8 @@ public class MainActivity2 extends AppCompatActivity {
 
     public void viewProfile(View view) {
        // startActivity(new Intent(MainActivity2.this, Profile.class));
+        String url = "https://twitter.com/LegitTipster";
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
     }
 
     public void viewCart(View view) {
@@ -531,5 +541,25 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
 
+    public void submit_phoone(View view) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("phone", phoneEdt.getText().toString());
+        db.collection("users")
+                .add(data)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(getApplicationContext(), "Welcome: " + "We'll get in touch ",Toast.LENGTH_LONG).show();
+                        //clear views
+                        phoneEdt.setText("");
 
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "Error"+ e,Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
 }
