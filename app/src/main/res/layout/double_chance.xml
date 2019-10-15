@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
 
 
-    tools:context=".DoubleChance">
+    tools:context="ui.DoubleChance">
 
     <ProgressBar
         android:id="@+id/progress_bar"

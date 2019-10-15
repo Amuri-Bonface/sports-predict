@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#082AE9"
+       android:layout_marginBottom="5dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:background="#0A23A5"
+        android:padding="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/leagueName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#A50C0C"
+                    android:gravity="start"
+                    android:text="League Name"
+                    android:textAlignment="center"
+                    android:textColor="@color/about_libraries_special_button_openSource_dark"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/homeTeam"
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Home Team"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/about_libraries_special_button_openSource_dark"
+                    android:textSize="11sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:layout_width="63dp"
+                    android:layout_height="wrap_content"
+                    android:text="vs"
+                    android:textAlignment="center"
+                    android:textColor="#F3ECEC"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/awayTeam"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="Away Team"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/about_libraries_special_button_openSource_dark"
+                    android:textSize="11sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/homeWin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Home Win(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="8sp" />
+
+                    <TextView
+                        android:id="@+id/homeDraw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#C71111"
+                        android:text="Home/Draw(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="8sp" />
+
+                    <TextView
+                        android:id="@+id/un25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UN25(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/ov25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="OV25(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/match_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Match Status:"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/dateTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date and time"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/draw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Draw(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/homeAway"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#C71111"
+                        android:text="Home/Away(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="8sp" />
+
+                    <TextView
+                        android:id="@+id/btts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BTTS(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+
+                    <TextView
+                        android:id="@+id/ov15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="OV15(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/un15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UN15(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:id="@+id/awayWin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Away Win(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="8sp" />
+
+                    <TextView
+                        android:id="@+id/awayDraw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#C71111"
+                        android:text="Away/Draw(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="8sp" />
+
+                    <TextView
+                        android:id="@+id/otts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OTTS(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+
+                    <TextView
+                        android:id="@+id/ov35"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="OV35(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+
+                    <TextView
+                        android:id="@+id/un35"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UN35(%)"
+                        android:textAlignment="center"
+                        android:textColor="@color/about_libraries_special_button_openSource_dark"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/fulltime"
+                android:layout_width="match_parent"
+                android:background="#D30606"
+                android:layout_height="wrap_content"
+                android:text="Full-Time:"
+                android:textAlignment="center"
+                android:textColor="@color/about_libraries_special_button_openSource_dark"
+                android:textSize="9sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
+
+
+
+

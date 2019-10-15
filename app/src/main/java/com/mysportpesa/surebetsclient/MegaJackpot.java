@@ -20,14 +20,18 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.mysportpesa.surebetsclient.model.PredictionModel;
+import com.mysportpesa.surebetsclient.util.CheckInternetConnection;
 
 import java.util.Objects;
 
@@ -42,6 +46,7 @@ public class MegaJackpot extends AppCompatActivity {
     RecyclerView friendList;
 
     private FirebaseFirestore db;
+    private InterstitialAd mInterstitialAd;
     private FirestoreRecyclerAdapter adapter;
     LinearLayoutManager linearLayoutManager;
 
@@ -230,6 +235,7 @@ public class MegaJackpot extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        loadFullscreenAd();
         adapter.startListening();
     }
 
@@ -237,6 +243,32 @@ public class MegaJackpot extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+    private void loadFullscreenAd(){
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-7590760147512944/8727388323");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+
+            }
+
+            @Override
+            public void onAdLoaded() {
+
+                mInterstitialAd.show();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+
+            }
+        });
+
+
     }
 
 }

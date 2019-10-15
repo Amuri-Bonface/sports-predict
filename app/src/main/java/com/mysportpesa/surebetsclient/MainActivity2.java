@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
@@ -26,6 +27,9 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,6 +37,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.mikepenz.crossfadedrawerlayout.view.CrossfadeDrawerLayout;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -48,6 +53,14 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
 import com.mikepenz.materialize.util.UIUtils;
+import com.mysportpesa.surebetsclient.ui.DoubleChance;
+import com.mysportpesa.surebetsclient.ui.History;
+import com.mysportpesa.surebetsclient.ui.LiveInPlay;
+import com.mysportpesa.surebetsclient.ui.PremiumTips;
+import com.mysportpesa.surebetsclient.ui.SureOdds;
+import com.mysportpesa.surebetsclient.ui.UnderOver;
+import com.mysportpesa.surebetsclient.util.CheckInternetConnection;
+import com.mysportpesa.surebetsclient.util.UserSession;
 import com.webianks.easy_feedback.EasyFeedback;
 
 import java.util.ArrayList;
@@ -56,7 +69,7 @@ import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
-public class MainActivity2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity implements RewardedVideoAdListener {
 
         private SliderLayout sliderShow;
     private Drawer result;
@@ -70,6 +83,16 @@ public class MainActivity2 extends AppCompatActivity {
     private FirebaseFirestore db;
     private InterstitialAd mInterstitialAd;
     private EditText phoneEdt;
+    private String affiliate1=null;
+    private String affiliate2=null;
+    private String affiliate3=null;
+    private String affiliate4=null;
+    private String affiliate5=null;
+    private String affiliate6=null;
+    public String Url_API=null;
+    private RewardedVideoAd mRewardedVideoAd;
+
+    //,affiliate2,affiliate3,affiliate4,affiliate5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +106,11 @@ public class MainActivity2 extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         phoneEdt=(EditText)findViewById(R.id.phone);
 
+        // Use an activity context to get the rewarded video instance.
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
+        mRewardedVideoAd.setRewardedVideoAdListener(this);
+
+
         //check Internet Connection
         new CheckInternetConnection(this).checkConnection();
 
@@ -94,6 +122,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         //ImageSLider
         inflateImageSlider();
+        geturl2();
 
         if (session.getFirstTime()) {
             //tap target view
@@ -101,14 +130,15 @@ public class MainActivity2 extends AppCompatActivity {
             session.setFirstTime(false);
         }
 
-        MobileAds.initialize(this,
-                "cca-app-pub-7590760147512944~3231997997");
-
-        loadAds();
+        MobileAds.initialize(MainActivity2.this,"cca-app-pub-7590760147512944~3231997997");
+        loadAds1();
+        loadAds2();
+        loadAds3();
         loadFullscreenAd();
+
     }
 
-    private void loadAds(){
+    private void loadAds1(){
         AdView mAdView;
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -116,8 +146,23 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 
-    private void loadFullscreenAd(){
+    private void loadAds2(){
+        AdView mAdView;
+        mAdView = findViewById(R.id.adView2);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
+    }
+    private void loadAds3(){
+        AdView mAdView;
+        mAdView = findViewById(R.id.adView3);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+    }
+
+    private void loadFullscreenAd(){
+        MobileAds.initialize(MainActivity2.this,"cca-app-pub-7590760147512944~3231997997");
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-7590760147512944/8727388323");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
@@ -130,7 +175,8 @@ public class MainActivity2 extends AppCompatActivity {
 
             @Override
             public void onAdLoaded() {
-                loadFullscreenAd();
+
+                mInterstitialAd.show();
             }
 
             @Override
@@ -147,7 +193,7 @@ public class MainActivity2 extends AppCompatActivity {
 
             new TapTargetSequence(this)
                     .targets(
-                            TapTarget.forView(findViewById(R.id.notifintro), "Notifications", "Latest offers will be available here !")
+                            TapTarget.forView(findViewById(R.id.notifintro), "Offers", "Latest offers and free VIP coins!")
                                     .targetCircleColor(R.color.colorAccent)
                                     .titleTextColor(R.color.colorAccent)
                                     .titleTextSize(25)
@@ -251,15 +297,60 @@ public class MainActivity2 extends AppCompatActivity {
             DefaultSliderView sliderView = new DefaultSliderView(this);
             sliderView.image(s);
             sliderShow.addSlider(sliderView);
+
+        }
+
+        for(int i = 0; i<sliderImages.size();i ++) {
+            DefaultSliderView defaultSliderView = new DefaultSliderView(this);
+            final int finalI = i;
+            defaultSliderView.image(sliderImages.get(i))
+                    .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                        @Override
+                        public void onSliderClick(BaseSliderView slider) {
+                            switch (finalI){
+                                case 0:
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(affiliate1.toString())));
+                                //Toast.makeText(MainActivity2.this,"Clicked Url"+affiliate1.toString(),Toast.LENGTH_LONG).show();
+                           break;
+                                case 1:
+                                  startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(affiliate2.toString())));
+                                  //Toast.makeText(MainActivity2.this, "clicked image=" + sliderImages.get(finalI), Toast.LENGTH_SHORT).show();
+                                  break;
+                                case 2:
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(affiliate3.toString())));
+                                    //Toast.makeText(MainActivity2.this, "clicked image=" + sliderImages.get(finalI), Toast.LENGTH_SHORT).show();
+                                    break;
+                                    case 3:
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(affiliate4.toString())));
+                                    //Toast.makeText(MainActivity2.this, "clicked image=" + sliderImages.get(finalI), Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 4:
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(affiliate5.toString())));
+                                    //Toast.makeText(MainActivity2.this, "clicked image=" + sliderImages.get(finalI), Toast.LENGTH_SHORT).show();
+                                    break;
+                                case 5:
+                                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(affiliate6.toString())));
+                                    //Toast.makeText(MainActivity2.this, "clicked image=" + sliderImages.get(finalI), Toast.LENGTH_SHORT).show();
+                                    break;
+                                default:
+                                    Toast.makeText(MainActivity2.this, "Default", Toast.LENGTH_LONG).show();
+                                    break;
+
+
+                        }}
+                    });
+
+            sliderShow.addSlider(defaultSliderView);
         }
 
         sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
 
     }
 
+
     private void inflateNavDrawer() {
 
-        //set Custom toolbar to activity -----------------------------------------------------------
+       //set Custom toolbar to activity -----------------------------------------------------------
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -460,6 +551,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+       // loadFullscreenAd();
         sliderShow.stopAutoCycle();
         super.onStop();
 
@@ -490,21 +582,28 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+       // loadFullscreenAd();
+    }
+
+    @Override
     protected void onResume() {
 
         //check Internet Connection
         new CheckInternetConnection(this).checkConnection();
         sliderShow.startAutoCycle();
-        loadFullscreenAd();
+       // loadFullscreenAd();
         super.onResume();
     }
+
 
     public void Notifications(View view) {
        // startActivity(new Intent(MainActivity2.this, NotificationActivity.class));
     }
 
     public void underover(View view) {
-        startActivity(new Intent(MainActivity2.this, UndeOver.class));
+        startActivity(new Intent(MainActivity2.this, UnderOver.class));
     }
 
     public void sureoddsactivity(View view) {
@@ -513,13 +612,12 @@ public class MainActivity2 extends AppCompatActivity {
 
 
     public void goalgoalactivity(View view) {
-
-        startActivity(new Intent(MainActivity2.this, GoalGoal.class));
+   startActivity(new Intent(MainActivity2.this, com.mysportpesa.surebetsclient.ui.GoalGoal.class));
     }
 
     public void minijackpotactivity(View view) {
 
-        startActivity(new Intent(MainActivity2.this, MiniJackpot.class));
+        startActivity(new Intent(MainActivity2.this, History.class));
     }
 
     public void megajackpotactivity(View view) {
@@ -561,5 +659,72 @@ public class MainActivity2 extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Error"+ e,Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+ private void geturl2(){
+     db.collection("affiliate")
+             .get()
+             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                 @Override
+                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                     if (task.isSuccessful()) {
+                         for (DocumentSnapshot document : task.getResult()) {
+                             affiliate1=document.getData().get("affiliate1").toString();
+                             affiliate2=document.getData().get("affiliate2").toString();
+                             affiliate3=document.getData().get("affiliate3").toString();
+                             affiliate4=document.getData().get("affiliate4").toString();
+                             affiliate5=document.getData().get("affiliate5").toString();
+                             affiliate6=document.getData().get("affiliate6").toString();
+                             Url_API=document.getData().get("API").toString();
+                          // Toast.makeText(MainActivity2.this, document.getId() + " => " + affiliate1 ,Toast.LENGTH_LONG).show();
+                         }
+                     } else {
+                       //  Log.d(TAG, "Error getting documents: ", task.getException());
+                     }
+                 }
+             });
+    }
+
+    public void loadRewardedVideoAd(View view) {
+        mRewardedVideoAd.loadAd("ca-app-pub-7590760147512944/3713635681",
+                new AdRequest.Builder().build());
+    }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+
+    }
+
+    @Override
+    public void onRewarded(RewardItem reward) {
+        Toast.makeText(this, "Submit your phone number to receive VIP: " + reward.getType() + "  VIP coins: " +
+                reward.getAmount(), Toast.LENGTH_SHORT).show();
+        // Reward the user.
+
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+
     }
 }

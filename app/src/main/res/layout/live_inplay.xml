@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
 
 
-    tools:context=".LiveInPlay">
+    tools:context=".ui.LiveInPlay">
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -28,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Live-in-play Tips"
+                android:text="Live Scores"
                 android:textSize="20sp" />
 
 
@@ -45,21 +45,14 @@
 
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <FrameLayout
-        android:padding="5dp"
-        android:layout_below="@id/toolbarwrap"
-        android:id="@+id/frame_container"
+
+    <WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_marginTop="55dp"
+        android:layout_height="match_parent"
+        />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/friend_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:divider="#00F00A0A" />
-
-    </FrameLayout>
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"

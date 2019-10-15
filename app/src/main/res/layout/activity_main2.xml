@@ -47,7 +47,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="10dp"
                 app:lottie_autoPlay="true"
-                android:onClick="Notifications"/>
+                android:onClick="loadRewardedVideoAd"/>
 
             <ImageView
                 android:id="@+id/view_profile"
@@ -133,7 +133,7 @@
                     <android.support.v7.widget.CardView
                         style="@style/homegridcard"
                     card_view:cardCornerRadius="@dimen/card_album_radius"
-                        android:onClick="premiumactivity">
+                        android:onClick="liveinplayactivity">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -142,17 +142,28 @@
                         <ImageView
                             android:id="@+id/tshirts"
                             style="@style/homegridimage"
-                            android:src="@drawable/tshirt" />
+                            android:src="@drawable/livescore" />
 
                         <TextView
                             style="@style/homegridtext"
                             android:layout_below="@id/tshirts"
-                            android:text="Premium" />
+                            android:text="Livescores" />
 
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
 
           </LinearLayout>
+                <com.google.android.gms.ads.AdView
+                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+
+                    android:layout_alignParentBottom="true"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/ad_unit_id">
+                </com.google.android.gms.ads.AdView>
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -206,7 +217,17 @@
                 </android.support.v7.widget.CardView>
 
                 </LinearLayout>
+                <com.google.android.gms.ads.AdView
+                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
 
+                    android:layout_alignParentBottom="true"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="@string/ad_unit_id">
+                </com.google.android.gms.ads.AdView>
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -252,7 +273,7 @@
                         <TextView
                             style="@style/homegridtext"
                             android:layout_below="@id/keychain"
-                            android:text="Mini Jackpot" />
+                            android:text="History" />
 
                     </RelativeLayout>
 
@@ -291,7 +312,7 @@
                     <android.support.v7.widget.CardView
                         style="@style/homegridcard"
                         card_view:cardCornerRadius="@dimen/card_album_radius"
-                        android:onClick="liveinplayactivity">
+                        android:onClick="premiumactivity">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -300,12 +321,12 @@
                             <ImageView
                                 android:id="@+id/keychain"
                                 style="@style/homegridimage"
-                                android:src="@drawable/second" />
+                                android:src="@drawable/tshirt" />
 
                             <TextView
                                 style="@style/homegridtext"
                                 android:layout_below="@id/keychain"
-                                android:text="Live-Inplay Tips" />
+                                android:text="Premium Members" />
 
                         </RelativeLayout>
 
