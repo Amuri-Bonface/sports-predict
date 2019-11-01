@@ -103,7 +103,7 @@ public class PremiumTips extends AppCompatActivity {
         //check Internet Connection
         new CheckInternetConnection(this).checkConnection();
         loadAds();
-        loadFullscreenAd();
+       // loadFullscreenAd();
 
     }
 

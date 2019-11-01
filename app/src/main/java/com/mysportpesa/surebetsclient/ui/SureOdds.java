@@ -97,14 +97,14 @@ public class SureOdds extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        loadFullscreenAd();
+       // loadFullscreenAd();
     }
 
     @Override
     public boolean onSupportNavigateUp() {
 
         onBackPressed();
-        loadFullscreenAd();
+      //  loadFullscreenAd();
         return true;
     }
     private void loadAds() {

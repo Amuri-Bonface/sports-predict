@@ -134,7 +134,8 @@ public class MainActivity2 extends AppCompatActivity implements RewardedVideoAdL
         loadAds1();
         loadAds2();
         loadAds3();
-        loadFullscreenAd();
+        loadAds4();
+        //loadFullscreenAd();
 
     }
 
@@ -160,7 +161,13 @@ public class MainActivity2 extends AppCompatActivity implements RewardedVideoAdL
         mAdView.loadAd(adRequest);
 
     }
+    private void loadAds4(){
+        AdView mAdView;
+        mAdView = findViewById(R.id.adView4);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
+    }
     private void loadFullscreenAd(){
         MobileAds.initialize(MainActivity2.this,"cca-app-pub-7590760147512944~3231997997");
         mInterstitialAd = new InterstitialAd(this);

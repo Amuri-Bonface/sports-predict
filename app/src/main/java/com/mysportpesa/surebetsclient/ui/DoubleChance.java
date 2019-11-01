@@ -100,7 +100,7 @@ public class DoubleChance extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
-        loadFullscreenAd();
+        //loadFullscreenAd();
         return true;
     }
 
