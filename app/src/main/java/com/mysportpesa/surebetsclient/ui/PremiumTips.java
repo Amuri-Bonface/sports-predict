@@ -75,12 +75,6 @@ public class PremiumTips extends AppCompatActivity {
             premium();
         });
 
-        ImageView paypa=findViewById(R.id.paypal);
-        paypa.setOnClickListener(v -> {
-            //call premium function
-            paypal();
-        });
-
 
        //contact admin via whatsapp
         ImageView newdoc= findViewById(R.id.newrecord);
@@ -144,9 +138,9 @@ public class PremiumTips extends AppCompatActivity {
         loadFullscreenAd();
     }
 
-    private void premium(){
+   private void premium(){
         //COPY phone number to clipboard
-        android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+       /* android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "+254717264871");
         clipboard.setPrimaryClip(clip);
 
@@ -164,13 +158,18 @@ public class PremiumTips extends AppCompatActivity {
                     }
                 })
                 .show();
-
+*/
+       String number="+254786420573";
+       String url = "https://api.whatsapp.com/send?phone="+number;
+       Intent i = new Intent(Intent.ACTION_VIEW);
+       i.setData(Uri.parse(url));
+       startActivity(i);
     }
-    private void paypal(){
-      /*  //COPY phone number to clipboard
+ /*   private void paypal(){
+      *//*  //COPY phone number to clipboard
         android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", "amuribonface@gmail.com");
-        clipboard.setPrimaryClip(clip);*/
+        clipboard.setPrimaryClip(clip);*//*
 
 
 
@@ -190,7 +189,7 @@ public class PremiumTips extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
 
 
-    }
+    }*/
 
     private void loadFullscreenAd(){
 

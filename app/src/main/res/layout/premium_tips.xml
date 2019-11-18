@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
 
 
-    tools:context=".DoubleChance">
+    tools:context=".ui.PremiumTips">
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -94,7 +94,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Weekly Premium @ $7"
+                        android:text="For premium Tips click the button below to contact us"
                         android:textAlignment="center"
                         android:textColor="#000"
                         android:textSize="20sp"
@@ -144,7 +144,7 @@
                             android:layout_width="70dp"
                             android:layout_height="91dp"
                             android:layout_marginLeft="10dp"
-                            android:src="@drawable/mpesa"
+                            android:src="@drawable/tshirt"
                             android:layout_marginStart="10dp" />
 
 
@@ -153,21 +153,31 @@
                         android:layout_width="match_parent"
 
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/paypal"
-                            android:layout_width="97dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/paypal" />
-
-                    </LinearLayout>
+                        android:orientation="horizontal"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
 
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content">
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/ad_unit_id">
+    </com.google.android.gms.ads.AdView>
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
@@ -179,5 +189,6 @@
         ads:adSize="BANNER"
         ads:adUnitId="@string/ad_unit_id">
     </com.google.android.gms.ads.AdView>
+    </LinearLayout>
 
 </RelativeLayout>

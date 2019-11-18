@@ -29,7 +29,7 @@ public class GlobalModel {
     public String prob_u_3;
 
 
-    public GlobalModel(){
+    public GlobalModel() {
     }
 
     public GlobalModel(String match_id, String country_name, String league_name, String match_date, String match_time, String match_hometeam_name, String match_awayteam_name, String match_status, String match_hometeam_score, String match_awayteam_score, String prob_HW, String prob_AW, String prob_D, String prob_HW_D, String prob_AW_D, String prob_HW_AW, String prob_btts, String prob_otts, String prob_ov25, String prob_u25, String prob_o_1, String prob_u_1, String prob_o_3, String prob_u_3) {

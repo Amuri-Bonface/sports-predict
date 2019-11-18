@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+
+
+    tools:context="ui.GoalGoal">
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -26,7 +28,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Goal-Goal Tips"
+                android:text="Goal Goal Tips"
                 android:textSize="20sp" />
 
 
@@ -36,6 +38,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/contactwhatsapp"
+                    android:layout_width="101dp"
+                    android:layout_height="28dp"
+                    android:src="@drawable/bubble" />
 
 
 
@@ -58,16 +65,35 @@
             android:divider="#00F00A0A" />
 
     </FrameLayout>
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_centerHorizontal="true"
 
         android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/ad_unit_id">
-    </com.google.android.gms.ads.AdView>
+        android:layout_height="wrap_content">
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/ad_unit_id">
+        </com.google.android.gms.ads.AdView>
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/ad_unit_id">
+        </com.google.android.gms.ads.AdView>
+    </LinearLayout>
 
 </RelativeLayout>
